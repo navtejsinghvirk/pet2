@@ -5,13 +5,10 @@
  * Date: 1/18/2018
  * Time: 4:05 PM
  */
-
 //require the autolaod file
 require_once ('vendor/autoload.php');
-
 //create an instance of the base class
 $f3 = Base::instance();
-
 //Set debug level
 $f3->set('DEBUG',3);
 
@@ -20,8 +17,8 @@ $f3->route('GET /',
     function() {
         $template= new Template();
         echo $template->render('views/home.html');
-    }
-);
+    });
+
 $f3->route('GET /show/@animal', function($f3,$params){
     switch ($params['animal']){
         case 'cat';
@@ -31,10 +28,22 @@ $f3->route('GET /show/@animal', function($f3,$params){
         default:
           //  $f3->error(404);
             echo "no";
-            }
+            }});
+
+$f3-> route('GET /order',function(){
+           $template = new Template();
+           echo $template->render('views/form1.html');
 });
 
+$f3-> route('GET /order2',function(){
+    $template = new Template();
+    echo $template->render('views/form2.html');
+});
 
+$f3-> route('GET /order',function(){
+    $template = new Template();
+    echo $template->render('views/results.html');
+});
 //run fat free
 $f3->run();
 ?>
