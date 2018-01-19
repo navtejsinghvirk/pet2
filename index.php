@@ -18,12 +18,21 @@ $f3->set('DEBUG',3);
 //define a default route
 $f3->route('GET /',
     function() {
-        $view = new View;
-        echo $view->rendor
-        ('views/home.html');
+        $template= new Template();
+        echo $template->render('views/home.html');
     }
 );
-
+$f3->route('GET /show/@animal', function($f3,$params){
+    switch ($params['animal']){
+        case 'cat';
+            echo "<img src='/328/pet2/images/cat.jpg'>"; break;
+        case 'dog';
+            echo "<img src='/328/pet2/images/dog.png'>"; break;
+        default:
+          //  $f3->error(404);
+            echo "no";
+            }
+});
 
 
 //run fat free
