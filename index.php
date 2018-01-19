@@ -18,7 +18,7 @@ session_start();
 //define a default route
 $f3->route('GET /',
     function() {
-        $template= new Template();
+      $template= new Template();
         echo $template->render('views/home.html');
     });
 
@@ -34,25 +34,22 @@ $f3->route('GET /show/@animal', function($f3,$params){
             }});
 
 $f3-> route('GET /order',function($f3,$params){
-
-          $f3-> set('animal',$params['animal']);
-           $_SESSION['animal'] = $f3-> get('animal');
-           $template = new Template();
+          $template = new Template();
            echo $template->render('views/form1.html');
 
 });
 
 $f3-> route('POST /order2',function($f3,$params){
-    $f3-> set('color',$params['color']);
-    $_SESSION['color'] = $f3-> get('color');
-    $template = new Template();
+    $_SESSION['animal']= $_POST['animal'];
+   $template = new Template();
    echo $template->render('/views/form2.html');
 
 });
 
 $f3-> route('POST /result',function($f3,$params){
-    $_SESSION['animal'] = $f3-> get('animal');;
-    $_SESSION['color'] = $f3-> get('color');;
+    $_SESSION['color'] = $_POST['color'];
+    $f3-> set('animal',$_SESSION['animal'] );
+    $f3-> set('color', $_SESSION['color']);
     $template = new Template();
     echo $template->render('/views/result.html');
 });
