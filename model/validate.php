@@ -40,7 +40,7 @@ function validString($word)
 }
 
 $errors = [];
-
+$success = sizeof($errors) ==0;
 if(empty($errors)){
     $success = true;
 }else{
