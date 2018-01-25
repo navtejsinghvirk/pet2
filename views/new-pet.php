@@ -12,18 +12,21 @@
 <form action="#" method="post">
     <fieldset>
     <legend> Order a Pet</legend>
-        <label>Pet Name:<input type="text"></label>
-<label>Pet Color <select name="pet-color" id="pet-color">
+        <label>Pet Name:<input type="text" name="pet-name"></label>
+         <label>Pet Color <select name="pet-color" id="pet-color">
         <repeat group="{{ @colors }}" value ="{{@colorOption}}">
             <option>{{@colorOption}}</option>
         </repeat>
-    </select>
-</label>
-        <label>
-            Pet Type:<input type="text"></label>
-    <input type="button" value=" Submit">
+       </select>
+       </label>
+        <label>Pet Type:<input type="text" name="pet-type"></label>
+       <input type="button" value=" Submit">
     </fieldset>
 </form>
+
+    <check if="{{@success}}">
+        <h2>Thanks for your oder of{{@pet-type}}</h2>
+    </check>
 </div>
 </body>
 </html>
