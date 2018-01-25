@@ -8,9 +8,10 @@
 <h2> Order a Pet</h2>
 <form action="#" method="post">
 Pet Name:<input type="text">
-Pet Color <select name="color">
-        <option>white</option>
-        <option>green</option>
+Pet Color <select name="pet-color" id="pet-color">
+        <repeat group="{{ @colors }}" value ="{{@colorOption}}">
+            <option>{{@colorOption}}</option>
+        </repeat>
     </select>
     Pet Type:<input type="text"><br><br>
     <input type="button" value=" Submit">
