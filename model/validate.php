@@ -13,10 +13,6 @@ ini_set("display_errors", 1);
 //f3 error debugging
 //$f3->set(DEBUG, 3);
 
-global $errors;
-global $color;
-global $success;
-global $word;
 
 $errors = array();
 
@@ -30,15 +26,15 @@ if (!validColor($color)) {
     $errors['color'] = "Please enter a valid color";
 }
 
-function validString($word)
+function validString($type)
 {
-  return (!empty($word) && ctype_alpha($word));
+    return (!empty($type) && ctype_alpha($type));
 }
 
-if (!validString($word)) {
-  $errors['word'] = "Please enter a valid pet.";
+if (!validString($name)) {
+    $errors['name'] = "Please enter a valid pet.";
 }
- $success = sizeof($errors) == 0;
+$success = sizeof($errors) == 0;
 
 if (empty($errors)) {
     $success = true;
