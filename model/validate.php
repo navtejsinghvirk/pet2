@@ -16,31 +16,24 @@ $f3->set(DEBUG, 3);
 function validColor($color)
 {
     global $f3;
-    global $errors;
-    if (in_array($color, $f3->get('colors'))) {
-        return true;
-    } else {
-        return false;
-    }
+    return in_array($color, $f3->get('colors'));
+}
     if(!validColor($color)){
         $errors['color'] = "Please enter a valid color.";
-    }
-
 }
 
 function validString($word)
 {
-    if (!empty($word) && ctype_alpha($word)) {
-        return true;
+    return (!empty($word) && ctype_alpha($word));
     }
 
     if(!validString($word)){
         $errors['word'] = "Please enter a valid pet.";
-    }
 }
 
-$errors = [];
-$success = sizeof($errors) ==0;
+$errors = array();
+$success = sizeof($errors) == 0;
+
 if(empty($errors)){
     $success = true;
 }else{
