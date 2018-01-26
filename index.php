@@ -7,10 +7,17 @@
  */
 //require the autolaod file
 require_once('vendor/autoload.php');
+
+//error reporting
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 //create an instance of the base class
 $f3 = Base::instance();
+
 //Set debug level
 $f3->set('DEBUG', 3);
+
 //start session
 session_start();
 
@@ -64,21 +71,21 @@ $f3->route('GET|POST /new-pet',
     function ($f3) {
         if (isset($_POST['submit'])) {
             include('model/validate.php');
-            $color = $_POST['pet-color'];
-            $name =  $_POST['pet-name'];
-            $type =  $_POST['pet-type'];
-           $errors = $_POST['errors'];
-          $success = $_POST['success'];
+            $color = validColor($_POST['pet-color']);
+            $name = validString($_POST['pet-name']);
+            $type = validString($_POST['pet-type']);
+            $errors = empty($_POST['errors']);
+            $success = empty($_POST['success']);
 
-            $f3->set('color',$color);
-            $f3->set('pet-name',$name);
-            $f3->set('pet-type',$type);
+            $f3->set('color', $color);
+            $f3->set('name',$name);
+            $f3->set('type',$type);
             $f3->set('errors',$errors);
             $f3->set('success',$success);
         }
-        $template = new Template();
-        echo $template->render('views/new-pet.php');
-    });
+            $template = new Template();
+            echo $template->render('views/new-pet.php');
+        });
 //run fat free
 $f3->run();
 ?>
