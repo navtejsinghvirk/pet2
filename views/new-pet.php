@@ -19,7 +19,7 @@
 
          <label class="col-sm-2 control-label" for="pet-color">Pet Color:
 
-                 <check if = "{{ @errors['color'] }}">
+                 <check if = "{{ isset(@errors['color']) }}">
                      <p>{{ @errors['color'] }}</p>
                  </check>
 
