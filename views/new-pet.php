@@ -8,24 +8,39 @@
 </head>
 <body>
 <div class="container">
-
-<form action="#" method="post">
+    <form action="#" method="POST">
     <fieldset>
     <legend> Order a Pet</legend>
-        <label>Pet Name:<input type="text" name="pet-name"></label>
-         <label>Pet Color <select name="pet-color" id="pet-color">
-        <repeat group="{{ @colors }}" value ="{{@colorOption}}">
-            <option>{{@colorOption}}</option>
-        </repeat>
-       </select>
+        <label>
+            Pet Name:<input type="text" name="pet-name" id="pet-name">
+        </label>
+         <label class="col-sm-1 control-label" for="pet-color">Pet Color:
+
+             <div class="col-sm-3">
+                 <check if="{{ @errors['color']}}">
+                     <p>{{@ errors['color'] }}</p>
+                 </check>
+             <select name="pet-color" id="pet-color" class="form-control">
+                 <option>--Select--</option>
+                <repeat group="{{ @colors }}" value ="{{@colorOption}}">
+                    <option
+                    <check if="{{ @colorOption == @color }}">
+                        selected </check>
+                       {{@colorOption}}
+                    </option>
+                </repeat>
+             </select>
+             </div>
        </label>
-        <label>Pet Type:<input type="text" name="pet-type"></label>
-       <input type="button" value=" Submit">
+        <label>Pet Type:
+            <input type="text" name="pet-type" id="pet-type">
+        </label>
+       <input type="submit" name="submit" value="Submit">
     </fieldset>
 </form>
 
-    <check if="{{@success}}">
-        <h2>Thanks for your oder of{{@pet-type}}</h2>
+    <check if="{{ @success }}">
+        <h2>Thanks for your oder of{{ @pet-type }}</h2>
     </check>
 </div>
 </body>
