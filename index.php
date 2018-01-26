@@ -70,18 +70,19 @@ $f3->set('colors', array('pink', 'green', 'blue'));
 $f3->route('GET|POST /new-pet',
     function ($f3) {
         if (isset($_POST['submit'])) {
-            include('model/validate.php');
+
+            require('model/validate.php');
+
             $color = validColor($_POST['pet-color']);
             $name = validString($_POST['pet-name']);
             $type = validString($_POST['pet-type']);
-            $errors = empty($_POST['errors']);
-            $success = empty($_POST['success']);
 
             $f3->set('color', $color);
             $f3->set('name',$name);
             $f3->set('type',$type);
             $f3->set('errors',$errors);
             $f3->set('success',$success);
+
         }
             $template = new Template();
             echo $template->render('views/new-pet.php');

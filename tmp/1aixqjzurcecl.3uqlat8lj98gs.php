@@ -13,37 +13,38 @@
 
             <legend> Order a Pet</legend>
 
-            <check if="{{ isset(@errors['name'])}}">
-                <false>Error in name!</false>
-            </check>
+            <?php if (isset($errors['name'])): ?>
+                <?php else: ?>Error in name!
+            <?php endif; ?>
             <label class="col-sm-3 control-label" for="pet-name">Pet Name:
                 <input type="text" name="pet-name" id="pet-name">
             </label>
 
             <label class="col-sm-2 control-label" for="pet-color">Pet Color:
 
-                <check if="{{ isset(@errors['color']) }}">
-                    <false>
+                <?php if (isset($errors['color'])): ?>
+                    <?php else: ?>
                         Error in color!
-                    </false>
-                </check>
+                    
+                <?php endif; ?>
 
                 <select name="pet-color" id="pet-color" class="form-control">
                     <option>--Select--</option>
-                    <repeat group="{{ @colors }}" value="{{ @colorOption }}">
+                    <?php foreach (($colors?:[]) as $colorOption): ?>
                         <option>
-                            <check if="{{ @colorOption == @color }}">
+                            <?php if ($colorOption == $color): ?>
                                 selected
-                            </check>
-                            {{ @colorOption }}
+                            <?php endif; ?>
+                            <?= ($colorOption)."
+" ?>
                         </option>
-                    </repeat>
+                    <?php endforeach; ?>
                 </select>
             </label>
 
-            <check if="{{ isset(@errors['type'])}}">
-                <false>Error in type!</false>
-            </check>
+            <?php if (isset($errors['type'])): ?>
+                <?php else: ?>Error in type!
+            <?php endif; ?>
             <label class="col-sm-3 control-label" for="pet-type">Pet Type:
                 <input type="text" name="pet-type" id="pet-type">
             </label>
@@ -55,9 +56,9 @@
         </fieldset>
     </form>
 
-    <check if="{{ @success }}">
-        <false>Thanks for your order of a {{ @name}} {{ @color }} {{ @type }}</false>
-    </check>
+    <?php if ($success): ?>
+        <?php else: ?>Thanks for your order of a <?= ($name) ?> <?= ($color) ?> <?= ($type) ?>
+    <?php endif; ?>
 
 </div>
 </body>
