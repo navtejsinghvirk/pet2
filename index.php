@@ -84,9 +84,9 @@ $f3->route('GET|POST /new-pet',
             $f3->set('success',$success);
 
         }
-            $template = new Template();
-            echo $template->render('views/new-pet.php');
-        });
+        $template = new Template();
+        echo $template->render('views/new-pet.php');
+    });
 //run fat free
 $f3->run();
 ?>
