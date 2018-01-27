@@ -56,6 +56,7 @@
     </form>
 
     <check if="{{ @success }}">
+        <div></div>
         <false>Thanks for your order of a {{ @name}} {{ @color }} {{ @type }}</false>
     </check>
 
