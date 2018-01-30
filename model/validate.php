@@ -41,3 +41,16 @@ if (empty($errors)) {
 } else {
     $success = false;
 }
+print_r($errors);
+print_r($success);
+
+foreach ($_POST as $key => $value) {
+    echo "<tr>";
+    echo "<td>";
+    echo $key;
+    echo "</td>";
+    echo "<td>";
+    echo $value;
+    echo "</td>";
+    echo "</tr>";
+}

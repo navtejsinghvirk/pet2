@@ -14,7 +14,7 @@
             <legend> Order a Pet</legend>
 
             <check if="{{ isset(@errors['name'])}}">
-                <false>Error in name!</false>
+                <h2>Error in name!</h2>
             </check>
             <label class="col-sm-3 control-label" for="pet-name">Pet Name:
                 <input type="text" name="pet-name" id="pet-name">
@@ -23,9 +23,9 @@
             <label class="col-sm-2 control-label" for="pet-color">Pet Color:
 
                 <check if="{{ isset(@errors['color']) }}">
-                    <false>
+                    <h2>
                         Error in color!
-                    </false>
+                    </h2>
                 </check>
 
                 <select name="pet-color" id="pet-color" class="form-control">
@@ -42,7 +42,7 @@
             </label>
 
             <check if="{{ isset(@errors['type'])}}">
-                <false>Error in type!</false>
+                <h2>Error in type!</h2>
             </check>
             <label class="col-sm-3 control-label" for="pet-type">Pet Type:
                 <input type="text" name="pet-type" id="pet-type">
